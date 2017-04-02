@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>监管平台</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css.map">
+    <link rel="stylesheet" href="css/angular-csp.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/jquery/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="css/common/common.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/common/thirdParty.css">
+</head>
+<body ng-controller="dmspCtrl">
+<div class="paging-container">
+    <!--页面头部开始-->
+    <div class="paging-header">
+        <!--页头左边logo开始-->
+        <div class="header-logo">
+            <ul>
+                <li>
+                    <img src="images/logo.png">
+                </li>
+                <li>
+                    <span>DMSP监管平台</span>
+                </li>
+            </ul>
+        </div>
+        <!--页头左边logo开始-->
+        <!--页头右边开始-->
+        <div class="header-info">
+            <ul>
+                <li class="slider-x" ng-click="sliderX()">
+                    <span class="fa fa-dedent" ng-show="inOrdedent"></span>
+                    <span class="fa fa-indent" ng-hide="inOrdedent"></span>
+                </li>
+                <li class="search-box">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+                <li class="login-out pull-right">
+                    <span class="fa fa-sign-out"></span>
+                </li>
+                <li class="user-center pull-right">
+                    <span class="fa fa-user"></span>
+                </li>
+                <li class="message pull-right" ng-click="toggleMessage()">
+                    <span class="fa fa-comments"></span>
+                    <div class="message-number" ng-bind="unreadedNumbers"></div>
+                </li>
+            </ul>
+            <!--消息开始-->
+            <div class="message-content" id="message-content">
+                <div class="dot-divider"></div>
+                <div class="message-body">
+                    <div class="message-title">消息</div>
+                    <div class="message-header">
+                        <div>
+                            <label class="green" ng-bind="messagesTotalNumbers"></label><span>消息总数</span>
+                        </div>
+                        <div>
+                            <label class="red" ng-bind="unreadedNumbers"></label><span>未读消息</span>
+                        </div>
+                    </div>
+                    <ul class="message-list" ng-repeat="messages in messagesLists">
+                        <li class="unreaded" ng-click="updateReaded($index)">
+                            <div class="message-avatar">
+                                <img ng-src={{messages.messageAvatar}} alt="">
+                            </div>
+                            <h5 ng-bind="messages.messageName"></h5>
+                            <span class="message-date" ng-bind="messages.messageDate"></span>
+                            <br>
+                            <i class=" message-status red" ng-if="messages.messageStatus=='未读'" ng-bind="messages.messageStatus"></i>
+                            <i class=" message-status green" ng-if="messages.messageStatus=='已读'" ng-bind="messages.messageStatus"></i>
+                            <b></b>
+                            <div class="message-content-item" ng-bind="messages.messageContent">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--消息结束-->
+        </div>
+        <!--页头右边结束-->
+    </div>
+    <!--页面头部结束-->
+    <!--页面中部开始-->
+    <div class="paging-middle">
+        <!--页中左边框栏开始-->
+        <div class="left-slider">
+            <!--用户信息开始-->
+            <div class="user-info">
+                <div class="user-image">
+                    <img src="images/window-pic/333.jpg" alt="">
+                </div>
+                <div class="user-name">
+                    <h4>Kai Xu</h4>
+                    <h5>Web Developer</h5>
+                </div>
+            </div>
+            <!--用户信息结束-->
+            <!--下拉菜单开始-->
+            <div class="slider-bar" id="addScroll">
+                <ul ng-click="sliderBarCollapse($event)" >
+                    <li class="notActive active" >
+                        <a href="#main">
+                            <span class="fa fa-desktop"></span>
+                            <span>主页</span>
+                        </a>
+                    </li>
+                    <li class="x-profile {{parentTemp.parentLiStatus}}" ng-repeat="parentTemp in sliderAllLists">
+                        <a>
+                            <span class="fa {{parentTemp.parentSign}}"></span>
+                            <span ng-bind="parentTemp.parentLiItem"></span>
+                            <span class="fa fa-minus-square-o fa-plus-square-o"></span>
+                        </a>
+                        <ul>
+                            <span class="fa fa-caret-left"></span>
+                           <li class="{{childrenTemp.childLiStatus}}" ng-repeat="childrenTemp in parentTemp.childrenLi">
+                               <a href="{{childrenTemp.link}}" >
+                                   <i class="fa {{childrenTemp.childSign}}"></i>
+                                   <b ng-bind="childrenTemp.childLi"></b>
+                               </a>
+
+                           </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--下拉菜单结束-->
+        </div>
+        <!--页中左边框栏结束-->
+        <!--页中右边内容开始-->
+        <div class="right-content">
+            <!--面包屑开始-->
+            <div class="bread-crumb">
+                <ul>
+                    <li class="{{breadCrumbTemp.status}}" ng-repeat="breadCrumbTemp in breadCrumbLists" ng-click="changeBreadcrumb($event,$index)">
+                        <a href="{{breadCrumbTemp.link}}" >
+                            <i class="{{breadCrumbTemp.sign}}"></i>
+                            <b ng-bind="breadCrumbTemp.htmlContent"></b>
+                        </a>
+                        <span class="{{breadCrumbTemp.closeSign}}" ng-click="closeBreadcrumb($index)"></span>
+                    </li>
+                </ul>
+            </div>
+            <!--面包屑结束-->
+            <!--详情展示开始-->
+            <div class="content-body">
+                <div class="show-content" id="addScrollContent">
+                    <div ng-view ></div>
+                </div>
+            </div>
+            <!--详情展示结束-->
+        </div>
+        <!--页中右边内容结束-->
+    </div>
+    <!--页面中部结束-->
+    <!--页面尾部开始-->
+    <div class="paging-footer"></div>
+    <!--页面尾部结束-->
+</div>
+
+<script src="script/jquery-3.2.0.min.js"></script>
+<script src="script/jquery-ui.js"></script>
+<script src="script/bootstrap.js"></script>
+<script src="script/angular/angular.js"></script>
+<script src="script/angular/angular-route.js"></script>
+<script src="script/scrollbar.min.js"></script>
+<script src="script/mousewheel.min.js"></script>
+<script src="script/echarts.common.min.js"></script>
+<script src="script/tabulator.js"></script>
+<script src="//cdn.bootcss.com/angular-ui-sortable/0.17.0/sortable.js"></script>
+<!--<script src="//cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>-->
+<script src="script/qrcode.js"></script>
+<script src="script/angular-qrcode.js"></script>
+<script src="script/index.js"></script>
+<script>
+
+</script>
+</body>
+</html>

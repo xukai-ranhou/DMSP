@@ -1,0 +1,18 @@
+/*tabulate*/
+
+.tabulate-btn{
+    font-size: 12px !important;
+    padding: 0 8px;
+    background-color: #fff;
+    color:green;
+    margin-right: 10px;
+}
+.tabulate-success{
+    color:green;
+}
+.tabulate-danger{
+    color:red;
+}
+.tabulate-info{
+    color:#5bc0de;
+}

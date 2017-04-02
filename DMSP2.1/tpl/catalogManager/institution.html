@@ -1,0 +1,68 @@
+<div class="institution" ng-controller="institutionCtrl">
+    <div class="institution-header">
+        <button class="btn btn-info"><span class="fa fa-refresh"></span> 刷新</button>
+        <label for="deployDate">调配日期：</label><input type="date" id="deployDate" class="custom-form">
+        <label for="selectArea">选择病区：</label>
+        <select name="" id="selectArea" class="custom-form">
+            <option value="0">--请选择--</option>
+            <option value="1">病区1</option>
+            <option value="1">病区2</option>
+            <option value="1">病区3</option>
+            <option value="1">病区4</option>
+        </select>
+        <button class="btn btn-success">确定</button>
+    </div>
+    <div class="tree" id="tree">
+        <ul ng-click="resetWidth()">
+            <li ng-repeat="country in vm.countries" ng-class="{closed:country.closed}">
+                <div ng-click="country.closed=!country.closed" >
+                    <span class="fa" ng-class="country.closed?'fa fa-folder-open':'fa fa-folder'" ng-show="country.provinces.length>0"></span>
+                    <span>{{country.label}}</span>
+                </div>
+                <ul ng-class="{hidden: !country.closed}">
+                    <li ng-repeat="province in country.provinces" ng-class="{closed:province.closed}">
+                        <div ng-click="province.closed=!province.closed" >
+                            <span class="fa" ng-class="province.closed?'fa fa-folder-open':'fa fa-folder'" ng-show="province.cities.length>0"></span>
+                            <span>{{province.label}}</span>
+                        </div>
+                        <ul ng-class="{hidden: !province.closed}">
+                            <li ng-repeat="city in province.cities" ng-click="vm.select(country, province, city)">
+                                <div ng-click="city.closed=!city.closed" >
+                                    <span class="fa" ng-class="city.closed?'fa fa-folder-open':'fa fa-folder'" ng-show="city.towns.length>0"></span>
+                                    <span>{{city.label}}</span>
+                                </div>
+                                <ul ng-class="{hidden: !city.closed}">
+                                    <li ng-repeat="town in city.towns">
+                                       <span>{{town.label}}</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="tree-content">
+        <!--<div ng-if="(vm.city && !vm.city.towns.length>0) || vm.town" >-->
+            <!--病区编号：{{vm.city.label}}-->
+        <!--</div>-->
+
+        <ul ui-sortable="sortableOptions">
+            <li ng-click="changeBig($index)" ng-repeat="list in lists" >
+                <!--<img src="{{list.rcontent}}" alt="">-->
+                <div class="code">
+                    <!--<div class="code" id="code_{{$index}}" data="{{list.rcontent}}">-->
+                        <!--<img src="{{list.rcontent}}" alt="">-->
+                    <!--</div>-->
+                    <qrcode data="{{list.rcontent}}"></qrcode>
+                    <img src="{{list.rcontent}}" alt="">
+                </div>
+                <h6>{{list.rname}}</h6>
+            </li>
+        </ul>
+    </div>
+    <div ng-show="showBig" class="show-big" ng-click="changeSmall()">
+        <qrcode data="{{lists[0].rcontent}}" size="200"></qrcode>
+    </div>
+</div>

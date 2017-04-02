@@ -1,0 +1,465 @@
+/*初始化*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body,html{
+    background:#fff;
+    color:#333;
+    font-size:12px;
+    font-family:"SimSun","宋体","Arial Narrow";
+    overflow-x: hidden;
+    outline: none;
+}
+ul,ol{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+a:hover,a:active,a:focus{
+    text-decoration:none;
+}
+a:focus{
+    outline: none;
+}
+img{
+    border:0;
+    vertical-align: top;
+}
+h1,h2,h3,h4,h5,h6{
+    margin: 0px;
+    padding: 0px;
+
+}
+i,b,s,u,a{
+    display: inline-block;
+    font-weight: normal;
+    text-decoration: none;
+    text-underline:none;
+    font-style: normal;
+}
+
+/*展现部分公共头部*/
+.common-header{
+    border-bottom: 1px solid #aaa;
+    padding: 15px 10px;
+    overflow: hidden;
+}
+.common-header .search-items{
+    position: relative;
+    border: 1px solid #aaa;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    line-height: 29px;
+    height: 29px;
+    z-index: 99;
+    padding: 0 15px;
+}
+.common-header>ul{
+    position: absolute;
+    z-index: 100;
+    top:44px;
+    background: #fff;
+    border: 1px solid #aaa;
+    width: 130px;
+    border-radius: 4px;
+    padding:5px 0px;
+}
+.common-header>ul li{
+    padding: 5px 10px;
+}
+.common-header>ul li:hover{
+    background: rgb(232,234,236);
+}
+.common-header .search-condition>span{
+    line-height:29px;
+    height: 29px;
+    padding: 0 5px;
+    border: 1px solid #aaa;
+    border-left:none;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    vertical-align: baseline;
+    top:0px;
+}
+.common-header .search-items:hover,
+.common-header .search-condition>span:hover{
+    background: rgb(243,243,244);
+    cursor: pointer;
+}
+.common-header .search-content input{
+    width: 200px;
+    border: 1px solid #ddd;
+    background: #fdfdfd;
+    border-radius: 4px;
+    padding: 5px 6px;
+    margin: 0 5px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075) ;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+.common-header .search-content input:focus{
+    background: #fff;
+    border-color: rgb(17,94,147);
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    outline:none;  /*去掉input本身的focus效果*/
+}
+.common-header .search-btn{
+    position: relative;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    padding: 5px 30px 5px 10px;
+    color:#fff;
+    background-color: #2baab1;
+    border:1px solid #26969c;
+    transition: background-color linear 0.15s;
+}
+.common-header .search-btn:hover{
+    background-color:#32c5cd;
+    cursor: pointer;
+    transition: background-color linear 0.15s;
+}
+.common-header .search-btn .search-more{
+    position: absolute;
+    background-color: #2baab1;
+    display: inline-block;
+    padding: 5px 7px;
+    line-height: 17px;
+    right: 0px;
+    top:0px;
+    border-radius: 0px 4px 4px 0;
+    border-left:1px solid #26969c;
+}
+.common-header .search-btn .search-more:hover{
+    background-color:#32c5cd;
+    cursor: pointer;
+    transition: background-color linear 0.15s;
+}
+.common-header .search-items-hidden{
+    height: 100px;
+    width: 100%;
+    border: 1px solid red;
+    clear: both;
+}
+.common-header .edit-box ul{
+    border:1px solid #aaa;
+    border-radius: 4px;
+    margin: 0;
+    overflow: hidden;
+}
+.common-header .edit-box ul li{
+    float:left;
+    margin: 0px;
+    padding: 0px;
+}
+.common-header .edit-box ul li a{
+    padding: 5px 10px;
+    text-decoration: none;
+}
+.common-header .edit-box ul li:hover{
+    background:rgb(243,243,244) ;
+    cursor: pointer;
+}
+.common-header .edit-box ul li:not(:first-child){
+    border-left: 1px solid #aaa;
+}
+
+/*公共部分头部-2*/
+.n-common{
+    margin: 10px;
+    border: 1px solid #ddd;
+}
+.n-common .consumable-header{
+    border-bottom: 1px solid #aaa;
+    padding: 15px 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+.n-common .search-items{
+    position: relative;
+    border: 1px solid #aaa;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    line-height: 29px;
+    height: 29px;
+    z-index: 99;
+    padding: 0 15px;
+    overflow: hidden;
+}
+.n-common>ul{
+    position: absolute;
+    z-index: 100;
+    top:44px;
+    background: #fff;
+    border: 1px solid #aaa;
+    width: 130px;
+    border-radius: 4px;
+    padding:5px 0px;
+}
+.n-common>ul li{
+    padding: 5px 10px;
+}
+.n-common>ul li:hover{
+    background: rgb(232,234,236);
+}
+.n-common .search-condition>span{
+    line-height:29px;
+    height: 29px;
+    padding: 0 5px;
+    border: 1px solid #aaa;
+    border-left:none;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    vertical-align: baseline;
+    top:0px;
+}
+.n-common .search-items:hover,
+.n-common .search-condition>span:hover{
+    background: rgb(243,243,244);
+    cursor: pointer;
+}
+.n-common .search-content input{
+    width: 200px;
+    border: 1px solid #ddd;
+    background: #fdfdfd;
+    border-radius: 4px;
+    padding: 5px 6px;
+    margin: 0 5px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075) ;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+.n-common .search-content input:focus{
+    background: #fff;
+    border-color: rgb(17,94,147);
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    outline:none;  /*去掉input本身的focus效果*/
+}
+.n-common .search-btn{
+    position: relative;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    padding: 5px 10px 5px 10px;
+    color:#fff;
+    background-color: #2baab1;
+    border:1px solid #26969c;
+    transition: background-color linear 0.15s;
+}
+.n-common .search-btn:hover{
+    background-color:#32c5cd;
+    cursor: pointer;
+    transition: background-color linear 0.15s;
+}
+.n-common .edit-box ul{
+    border:1px solid #aaa;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.n-common .edit-box ul li{
+    float:left;
+    margin: 0px;
+    padding: 0px;
+}
+.n-common .edit-box ul li a{
+    padding: 5px 10px;
+    text-decoration: none;
+    color:#000;
+}
+.n-common .edit-box ul li:hover{
+    background:rgb(243,243,244) ;
+    cursor: pointer;
+}
+.n-common .edit-box ul li:hover a{
+    color:#23527c !important;
+}
+.n-common .edit-box ul li:not(:first-child){
+    border-left: 1px solid #aaa;
+}
+.n-common .more-conditions{
+    position: relative;
+    clear:both;
+    box-shadow: 0px 0px 2px #ddd;
+    border-radius: 4px;
+    top:10px;
+    padding: 10px 50px 10px 0;
+    display: none;
+}
+.n-common-content{
+    width: 100%;
+    border: none !important;
+    padding: 0 10px 10px 10px;
+}
+/*树形结构*/
+.tree-content{
+    position: absolute;
+    top:50px;
+    bottom: 0px;
+    /*border:1px solid red;*/
+    right: 0;
+    /*left: 300px;*/
+    z-index: 2;
+    overflow: hidden;
+    left: 150px;
+}
+.tree{
+    font-size: 13px;
+    min-width: 150px;
+    border-right: 1px solid #ddd;
+    box-shadow: 1px 0 1px 0 #ccc;
+    overflow: hidden;
+    position: absolute;
+    bottom:0px;
+    top:50px;
+    padding: 0 30px 0 10px;
+    z-index: 2;
+    /*background: #f5f5f5;*/
+}
+.tree:after{
+    content: "";
+    display: table;
+}
+.tree .fa{
+    font-size: 14px;
+    color:#ff892a;
+    margin-right: 1px;
+}
+.tree ul{
+    padding-left: 20px;
+    /*border-left:1px dotted #67b2dd;*/
+    margin-left: 5px;
+    position: relative;
+}
+.tree ul:before{
+    display: inline-block;
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: -3px;
+    bottom: 15px;
+    left: 0px;
+    border: 1px dotted #67b2dd;
+    border-width: 0 0 0 1px;
+}
+
+.tree ul li{
+    position: relative;
+    padding: 5px 0;
+}
+.tree ul li:before{
+    display: inline-block;
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: -19px;
+    width: 18px;
+    height: 0;
+    border-top: 1px dotted #67b2dd;
+}
+
+/*table 制作的form控件*/
+/*其中包括对input，checkbox，area等的基本设置*/
+.form{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    table-layout: fixed;
+    /*border-width:3px 1px 1px ;*/
+}
+.form .formTitle{
+    position: relative;
+    left:0;
+    text-align: right;
+    white-space: nowrap;
+    font-weight: normal;
+    width: 90px;
+    padding-right: 10px;
+}
+.form .formTitle font{
+    color:red;
+    position: absolute;
+    right: 0px;
+}
+.form .formValue{
+    position: relative;
+    padding: 5px;
+    width: auto;
+}
+.custom-form{
+    color:#000;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 9pt;
+    height: 28px;
+    padding: 0 0 1px 5px;
+    resize: none;
+    width: 100%;
+    box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+    -webkit-box-shadow:inset 0 0px 0px rgba(0,0,0,.075) ;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+.custom-form:focus{
+    background: #fff;
+    border-color: #2baab1;
+    border-radius: 4px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    outline:none;  /*去掉input本身的focus效果*/
+}
+textarea.custom-form{
+    height: 80px;
+}
+.formValue .custom-select{
+    width:84px;
+    float: left;
+    margin-right: 1px;
+}
+.formValue .custom-select + br + input{
+    width: 354px;
+}
+/*自定义控件checkbox*/
+
+
+.custom-checkbox{
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.custom-checkbox input[type="checkbox"]{
+    opacity: 0;
+    position: absolute;
+    z-index: 10;
+    width: 18px;
+    height: 18px;
+    left: 2px;
+    top:-3px;
+    cursor: pointer;
+}
+.custom-checkbox i{
+    position: absolute;
+    display: inline-block;
+    padding: 8px;
+    background: url("../../images/green1.png") 0px 0px no-repeat;
+    top:0px;
+    left: 0px;
+    z-index: 9;
+    border-radius: 4px;
+}
+.custom-checkbox.active i{
+    background: url("../../images/green1.png") -41px 0px no-repeat !important;
+}
